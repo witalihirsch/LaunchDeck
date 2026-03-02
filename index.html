@@ -118,7 +118,7 @@
     <p>Fast macOS launcher with a clean overlay and quick access workflows.</p>
 
     <div class="actions">
-      <a class="btn download" id="download-btn" href="https://witalihirsch.github.io/LaunchDeck/LaunchDeck-latest.dmg">Download</a>
+      <a class="btn download" id="download-btn" href="https://github.com/witalihirsch/LaunchDeck/releases/latest">Download</a>
     </div>
 
     <div class="purchase-options">
@@ -133,22 +133,26 @@
       const button = document.getElementById("download-btn");
       if (!button) return;
 
-      const appcastUrl = "https://witalihirsch.github.io/LaunchDeck/appcast.xml";
+      const latestReleaseApi = "https://api.github.com/repos/witalihirsch/LaunchDeck/releases/latest";
       const fallbackUrl = button.href;
 
       button.addEventListener("click", async (event) => {
         event.preventDefault();
 
         try {
-          const response = await fetch(appcastUrl, { cache: "no-store" });
+          const response = await fetch(latestReleaseApi, {
+            cache: "no-store",
+            headers: { Accept: "application/vnd.github+json" },
+          });
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-          const xmlText = await response.text();
-          const xml = new DOMParser().parseFromString(xmlText, "application/xml");
-          const enclosure = xml.querySelector("item enclosure");
-          const latestUrl = enclosure?.getAttribute("url");
+          const release = await response.json();
+          const assets = Array.isArray(release.assets) ? release.assets : [];
+          const dmg = assets.find((asset) => {
+            return typeof asset?.name === "string" && asset.name.toLowerCase().endsWith(".dmg");
+          });
+          const latestUrl = dmg?.browser_download_url || release.html_url || fallbackUrl;
 
-          if (!latestUrl) throw new Error("Missing enclosure URL in appcast.xml");
           window.location.assign(latestUrl);
         } catch (_) {
           window.location.assign(fallbackUrl);
