@@ -118,7 +118,7 @@
     <p>Fast macOS launcher with a clean overlay and quick access workflows.</p>
 
     <div class="actions">
-      <a class="btn download" href="https://github.com/witalihirsch/LaunchDeck/releases/latest">Download</a>
+      <a class="btn download" id="download-btn" href="https://witalihirsch.github.io/LaunchDeck/LaunchDeck-latest.dmg">Download</a>
     </div>
 
     <div class="purchase-options">
@@ -127,5 +127,34 @@
       <a class="btn buy" href="https://buy.polar.sh/polar_cl_S6jWkajmccQISoDK56zyIvlZb2mL3NXnWQGwD3ep9cf" target="_blank" rel="noopener noreferrer">Buy for 5 devices</a>
     </div>
   </main>
+
+  <script>
+    (() => {
+      const button = document.getElementById("download-btn");
+      if (!button) return;
+
+      const appcastUrl = "https://witalihirsch.github.io/LaunchDeck/appcast.xml";
+      const fallbackUrl = button.href;
+
+      button.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        try {
+          const response = await fetch(appcastUrl, { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+          const xmlText = await response.text();
+          const xml = new DOMParser().parseFromString(xmlText, "application/xml");
+          const enclosure = xml.querySelector("item enclosure");
+          const latestUrl = enclosure?.getAttribute("url");
+
+          if (!latestUrl) throw new Error("Missing enclosure URL in appcast.xml");
+          window.location.assign(latestUrl);
+        } catch (_) {
+          window.location.assign(fallbackUrl);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
