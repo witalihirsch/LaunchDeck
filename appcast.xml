@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>LaunchDeck</title>
+        <item>
+            <title>1.0</title>
+            <pubDate>Mon, 02 Mar 2026 14:41:30 +0500</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://witalihirsch.github.io/LaunchDeck/LaunchDeck-1.0-1.dmg" length="4240543" type="application/octet-stream" sparkle:edSignature="n0laOYGOTCUr/d0WiIDiF8SnS1pNZaEqlFm22M8yVzsZXVVSvch8iURlCwHOmFhiyCBOUOCaeWI7kncXy6tmDw=="/>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+        </item>
+    </channel>
+</rss>
