@@ -3,12 +3,12 @@
     <channel>
         <title>LaunchDeck</title>
         <item>
-            <title>1.5</title>
-            <pubDate>Sun, 15 Mar 2026 12:27:26 +0500</pubDate>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>1.5</sparkle:shortVersionString>
+            <title>1.6</title>
+            <pubDate>Sat, 02 May 2026 13:21:17 +0500</pubDate>
+            <sparkle:version>7</sparkle:version>
+            <sparkle:shortVersionString>1.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://witalihirsch.github.io/LaunchDeck/LaunchDeck-1.5.dmg" length="5284608" type="application/octet-stream" sparkle:edSignature="27tgDlR/m8r20B5Z7eRZvih2Y6N4Dpm3KZwgfJAD48FK5JzPgwi0U2q2S8eAFQ6cPRRg6dl/q6Z45mK6mCokBw=="/>
+            <enclosure url="https://witalihirsch.github.io/LaunchDeck/LaunchDeck.dmg" length="5414702" type="application/octet-stream" sparkle:edSignature="26RFPF0cfAaCAZ/Fnb+0ob5I4xzZhZnripa7Vy638vA4admPOWHvG6oQMKT60D+xKXZ5TZPofQ9lZs/MO5RhCw=="/>
         </item>
     </channel>
 </rss>
